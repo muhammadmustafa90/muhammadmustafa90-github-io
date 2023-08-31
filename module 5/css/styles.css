@@ -144,6 +144,10 @@ margin-bottom: 20 px;
 object-fit: cover;
 
 }
+
+.jumbotron{
+  margin-bottom: 20 px;
+}
 #specials-tile {
   background: url('../images/specials-tile.jpg') no-repeat;
   background-position: center;
