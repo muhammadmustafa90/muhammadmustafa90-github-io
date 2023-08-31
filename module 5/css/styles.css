@@ -131,6 +131,7 @@ margin-bottom: 20 px;
   position: relative;
   border: 2px solid #3F0C1F;
   overflow: hidden;
+  object-fit: contain;
 }
 #menu-tile:hover, #specials-tile:hover, #map-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
@@ -138,6 +139,7 @@ margin-bottom: 20 px;
 #menu-tile {
   background: url('../images/menu-tile.jpg') no-repeat;
   background-position: center;
+
 }
 #specials-tile {
   background: url('../images/specials-tile.jpg') no-repeat;
