@@ -1,91 +1,50 @@
-$(function () { // Same as document.addEventListener("DOMContentLoaded"...
+(function (global){
 
-  // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
-  $("#navbarToggle").blur(function (event) {
-    var screenWidth = window.innerWidth;
-    if (screenWidth < 768) {
-      $("#collapsable-nav").collapse('hide');
-    }
-  });
-});
+var ajaxUtils = {};
 
-(function (global) {
+//Returns an Http Request Object
+function getRequest()
+{
+if(window.XMLHttpRequest){
+return (new XMLHttpRequest());
+}
 
-var dc = {};
+else {
+global.alert("Ajax is not supported");
+return (null);
+}
+}
 
-var homeHtmlUrl = "snippets/home-snippet.html";
-var allCategoriesUrl =
-  "https://davids-restaurant.herokuapp.com/categories.json";
-var categoriesTitleHtml = "snippets/categories-title-snippet.html";
-var categoryHtml = "snippets/category-snippet.html";
-var menuItemsUrl =
-  "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
-var menuItemsTitleHtml = "snippets/menu-items-title.html";
-var menuItemHtml = "snippets/menu-item.html";
+//Makes an AJAX request to 'requestURL'
+ajaxUtils.sendGetRequest = function(requestURL, responseHandler, isJsonResponse) {
+var request = getRequest();
+request.onreadystatechange = function() {
+handleResponse(request,responseHandler,isJsonResponse);
+}
+request.open("GET", requestURL, true);
+request.send(null); //For POST only
+}
 
-// Convenience function for inserting innerHTML for 'select'
-var insertHtml = function (selector, html) {
-  var targetElem = document.querySelector(selector);
-  targetElem.innerHTML = html;
-};
+//Only calls user provided 'responseHandler'
+//function if response is ready
+//and not an error
 
-// Show loading icon inside element identified by 'selector'.
-var showLoading = function (selector) {
-  var html = "<div class='text-center'>";
-  html += "<img src='images/jumbotron_768.jpg'></div>";
-  insertHtml(selector, html);
-};
+function handleResponse(request,responseHandler,isJsonResponse)
+{
+if((request.readyState == 4) && request.status == 200){
+if(isJsonResponse == undefined)
+isJsonResponse = true;
+if(isJsonResponse === true)
+responseHandler(JSON.parse(request.responseText));
+else {
+responseHandler(request.responseText);
+}
+}
+}
 
-// Return substitute of '{{propName}}'
-// with propValue in given 'string'
-var insertProperty = function (string, propName, propValue) {
-  var propToReplace = "{{" + propName + "}}";
-  string = string
-    .replace(new RegExp(propToReplace, "g"), propValue);
-  return string;
-};
+global.$ajaxUtils = ajaxUtils;
 
-// Remove the class 'active' from home and switch to Menu button
-var switchMenuToActive = function () {
-  // Remove 'active' from home button
-  var classes = document.querySelector("#navHomeButton").className;
-  classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navHomeButton").className = classes;
-
-  // Add 'active' to menu button if not already there
-  classes = document.querySelector("#navMenuButton").className;
-  if (classes.indexOf("active") === -1) {
-    classes += " active";
-    document.querySelector("#navMenuButton").className = classes;
-  }
-};
-
-// On page load (before images or CSS)
-document.addEventListener("DOMContentLoaded", function (event) {
-
-// TODO: STEP 0: Look over the code from
-// *** start ***
-// to
-// *** finish ***
-// below.
-// We changed this code to retrieve all categories from the server instead of
-// simply requesting home HTML snippet. We now also have another function
-// called buildAndShowHomeHTML that will receive all the categories from the server
-// and process them: choose random category, retrieve home HTML snippet, insert that
-// random category into the home HTML snippet, and then insert that snippet into our
-// main page (index.html).
-//
-// TODO: STEP 1: Substitute [...] below with the *value* of the function buildAndShowHomeHTML,
-// so it can be called when server responds with the categories data.
-
-// *** start ***
-// On first load, show home view
-showLoading("#main-content");
-$ajaxUtils.sendGetRequest(
-  allCategoriesUrl,
-  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
-  true); // Explicitely setting the flag to get JSON from server processed into an object literal
-});
+})(window);
 // *** finish **
 
 
