@@ -147,7 +147,7 @@ object-fit: cover;
 }
 
 .jumbotron{
-
+  padding-bottom: 20px
   background-color: #61122F;
 }
 #specials-tile {
