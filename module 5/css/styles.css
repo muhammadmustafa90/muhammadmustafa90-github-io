@@ -375,11 +375,11 @@ h3.menu-item-title {
     margin: 0 auto 15px;
   }
 
-  .col-xxs-12 {
+  .col-md-4{
     position: relative;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
     float: left;
     width: 100%;
   }
