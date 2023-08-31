@@ -146,6 +146,9 @@ object-fit: cover;
 
 }
 
+#div-banner{
+  margin-bottom: 20px;
+}
 .jumbotron{
   background: url('../images/jumbotron_768.jpg') no-repeat;
   background-position: center;
