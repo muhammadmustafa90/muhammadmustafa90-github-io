@@ -129,6 +129,7 @@ margin-bottom: 20 px;
   width: 100%;
   margin-bottom: 15px;
   position: relative;
+  padding: 0px;
   border: 2px solid #3F0C1F;
   overflow: hidden;
   object-fit: fill;
@@ -146,7 +147,7 @@ object-fit: cover;
 }
 
 .jumbotron{
-  margin-bottom: 10 px;
+
   background-color: #61122F;
 }
 #specials-tile {
