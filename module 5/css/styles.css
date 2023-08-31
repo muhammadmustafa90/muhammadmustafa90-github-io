@@ -120,6 +120,10 @@ body {
   border: 2px solid #3F0C1F;
 }
 
+#main-content {
+
+  position: relative;
+}
 #menu-tile, #specials-tile, #map-tile {
   height: 250px;
   width: 100%;
