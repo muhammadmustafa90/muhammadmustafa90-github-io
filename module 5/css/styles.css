@@ -147,6 +147,9 @@ object-fit: cover;
 }
 
 .jumbotron{
+  background: url('../images/jumbotron_768.jpg') no-repeat;
+  background-position: center;
+  object-fit: cover;
   padding-bottom: 20px;
   margin: 0px;
  
