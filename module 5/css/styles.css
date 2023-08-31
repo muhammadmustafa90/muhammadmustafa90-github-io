@@ -136,10 +136,12 @@ margin-bottom: 20 px;
 }
 #menu-tile:hover, #specials-tile:hover, #map-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
+  object-fit: cover;
 }
 #menu-tile {
   background: url('../images/menu-tile.jpg') no-repeat;
   background-position: center;
+object-fit: cover;
 
 }
 #specials-tile {
