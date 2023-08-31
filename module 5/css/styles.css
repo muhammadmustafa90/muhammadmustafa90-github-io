@@ -132,17 +132,17 @@ margin-bottom: 20 px;
   padding: 0px;
   border: 2px solid #3F0C1F;
   overflow: hidden;
-  object-fit: fill;
+  object-fit: contain;
 
 }
 #menu-tile:hover, #specials-tile:hover, #map-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
-  object-fit: cover;
+  object-fit: contain;
 }
 #menu-tile {
   background: url('../images/menu-tile.jpg') no-repeat;
   background-position: center;
-object-fit: cover;
+object-fit: contain;
 
 }
 
